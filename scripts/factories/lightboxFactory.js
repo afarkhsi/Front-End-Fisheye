@@ -1,7 +1,5 @@
 import {mediaPhotographer} from '../pages/photographerController.js'
-// import {sortByDate} from'../controllers/sortMedia.js'
 import {disableBodyScroll, enableBodyScroll} from "./bodyScrollLock.js";
-// import  {arrayToSort} from '../controllers/sortMedia.js';
 
 // Récupérez tous les éléments nécessaires
 const lightbox = document.getElementById('lightbox');
@@ -18,8 +16,6 @@ let mediaElements = [];
 
 
 console.log('medias data:', mediaPhotographer)
-// console.log('medias SORT:', arrayToSort)
-
 
 // Fonction pour ouvrir la lightbox
 function openLightbox(index, medias) {
@@ -118,12 +114,6 @@ function keyHandler(e) {
 const popularityBtn = document.querySelector('.selector__element1')
 
 popularityBtn.addEventListener("click", function () {
-  // const arrayToSort = Array.from(mediaPhotographer);
-  // arrayToSort.sort(function (a, b) {
-  //   return b.likes - a.likes
-  // });
-  // mediaData(arrayToSort)
-
   mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video')
   mediaElements.forEach((mediaElement, index) => {
     mediaElement.addEventListener('click', () => {

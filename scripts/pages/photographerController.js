@@ -1,5 +1,4 @@
 import {mediaFactory} from "../factories/mediaFactory.js";
-// import {openLightbox} from "../factories/lightboxFactory.js";
 import {PhotographersModel} from "../models/photographersModel.js";
 
 export const parentDOM = document.querySelector("main");
@@ -15,7 +14,6 @@ const filterContainer = document.querySelector(".photographer-filter-container")
 const bannerContainer = document.querySelector(".photographer-banner-container")
 
 async function init() {
-  console.log(photographer);
   await bannerData(photographer);
   await likePriceData(photographer);
   formData(photographer);
