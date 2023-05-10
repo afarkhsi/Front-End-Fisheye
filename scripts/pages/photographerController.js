@@ -35,13 +35,6 @@ async function mediaSort(data) {
   filterContainer.appendChild(mediaFactory(data).getUserMediaSortDOM());
 }
 
-let mediaElements = []
-
-const lightbox = document.getElementById('lightbox');
-const lightboxMedia = document.getElementById('lightbox-media');
-const lightboxImage = document.getElementById('lightbox-image');
-
-
 
 // FONCTION GALERIE MEDIAS PHOTOGRAPHE
 export async function mediaData(data) {

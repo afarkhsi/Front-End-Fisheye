@@ -20,11 +20,11 @@ function contactForm(data) {
           <form class="form" method="post" onsubmit="event.preventDefault();validate()">
             <div class="formData" data-error="Veuillez saisir au moins deux caractères">
               <label for="form-firstname" tabindex="0">Prénom</label>
-              <input type="text" name="firstname" id="form-firstname" pattern="^[A-Za-z-]+$" aria-labelledby="form-firstname" required minlength="2"/>
+              <input type="text" name="firstname" id="form-firstname" pattern="^[a-zA-Z]+$" aria-labelledby="form-firstname" required minlength="2"/>
             </div>
             <div class="formData" data-error="Veuillez saisir au moins deux caractères">
               <label for="form-lastname" tabindex="0">Nom</label>
-              <input type="text" name="lastname" id="form-lastname" pattern="^[A-Za-z-]+$" aria-labelledby="form-lastname" required minlength="2"/>
+              <input type="text" name="lastname" id="form-lastname" pattern="^[a-zA-Z]+$" aria-labelledby="form-lastname" required minlength="2"/>
             </div>
             <div class="formData" data-error="Veuillez saisir une adresse mail valide">
               <label for="form-email" tabindex="0">Email</label>
