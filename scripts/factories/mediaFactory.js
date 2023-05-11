@@ -47,11 +47,16 @@ export function mediaFactory(media) {
     wrapper.querySelector('.likes').addEventListener('click', (event) => {
       if (event.target.checked) {
         compteur += 1
+        totalLikes +=1
+        console.log(totalLikes)
       } else {
         compteur -= 1
+        totalLikes -= 1
+console.log(totalLikes)
       }
-      wrapper.querySelector('label.compteur_like').innerHTML = compteur;
+      getLikesPrice()
       wrapper.querySelector('input.likes').setAttribute('aria-label', `${compteur} likes`)
+      wrapper.querySelector('label.compteur_like').innerHTML = compteur;
     })
     return wrapper;
   }
@@ -82,7 +87,7 @@ export function mediaFactory(media) {
 
   // Compteur like
   let compteur = likes
-
+  let totalLikes = 0;
 
   // Template encard prix photographe
   const wrapperLikesPrice = document.createElement('div');
@@ -90,12 +95,12 @@ export function mediaFactory(media) {
 
   function getLikesPrice() {
     const LikesPrice = `
-            <div id="total-likes">${sumLikes()}<span class="material-symbols-outlined">favorite</span></div>
+            <div id="total-likes"><span id="sum-likes">${totalLikes}</span><span class="material-symbols-outlined">favorite</span></div>
             <span>${photographer.price}€ / jour</span>
         `
-
+    // wrapperLikesPrice.querySelector('sum-likes').innerHTML = totalLikes;
     wrapperLikesPrice.innerHTML = LikesPrice;
-    sumLikes()
+    // sumLikes()
     return wrapperLikesPrice
   }
 
@@ -106,6 +111,7 @@ export function mediaFactory(media) {
     })
     return sum
   }
+  totalLikes = sumLikes();
 
   return {
     id,
@@ -114,6 +120,7 @@ export function mediaFactory(media) {
     picture,
     video,
     compteur,
+    totalLikes,
     date,
     price,
     getUserMediaSortDOM,

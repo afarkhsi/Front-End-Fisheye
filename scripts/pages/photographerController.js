@@ -2,6 +2,7 @@ import {mediaFactory} from "../factories/mediaFactory.js";
 import {PhotographersModel} from "../models/photographersModel.js";
 
 export const parentDOM = document.querySelector("main");
+const bodyDOM = document.querySelector("body");
 export const urlPhotographerId = (new URL(window.location)).searchParams.get("id");
 
 const photographersModel = new PhotographersModel('data/photographers.json');
@@ -15,7 +16,7 @@ const bannerContainer = document.querySelector(".photographer-banner-container")
 
 async function init() {
   await bannerData(photographer);
-  await likePriceData(photographer);
+  // await likePriceData(photographer);
   formData(photographer);
   await mediaData(mediaPhotographer);
   await mediaSort(mediaPhotographer);
@@ -42,15 +43,16 @@ export async function mediaData(data) {
   data.forEach((media) => {
     mediaDataContainer.appendChild(mediaFactory(media).getUserMediaDOM())
   });
-}
-
-// FONCTION ENCARD PRIX PHOTOGRAPHE
-async function likePriceData(data) {
   parentDOM.appendChild(mediaFactory(data).getLikesPrice());
 }
 
+// // FONCTION ENCARD PRIX PHOTOGRAPHE
+// async function likePriceData(data) {
+//   parentDOM.appendChild(mediaFactory(data).getLikesPrice());
+// }
+
 // FONCTION MODAL FORM
 function formData() {
-  parentDOM.appendChild(contactForm(photographer).getContactFormDOM());
+  bodyDOM.appendChild(contactForm(photographer).getContactFormDOM());
 }
 

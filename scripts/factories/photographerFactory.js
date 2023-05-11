@@ -38,7 +38,7 @@ function photographerFactory(photographer) {
                     <h4>${tagline}</h4>
                 </div>
                 <div class="profil_description_button">
-                    <button class="contact_button" aria-label="Contacter ${name}" onmouseover="" onclick="displayModal()">Contactez-moi</button>
+                    <button class="contact_button" aria-label="Contacter ${name}" aria-haspopup="dialog" aria-controls="dialog" onmouseover="" onclick="displayModal()">Contactez-moi</button>
                 </div>
                 <div class="profil_picture">
                     <img src="${picture}" alt="${portrait}">
