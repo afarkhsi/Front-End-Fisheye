@@ -14,13 +14,13 @@ export function mediaFactory(media) {
     let mediaDOM;
     if (media.image) {
       mediaDOM = `
-                <article class="picture_block" aria-label="lien vers l'image" >
+                <article class="picture_block" aria-label="lien vers l'image">
                     <div class="picture" data="${id}">
-                        <img id="${id}" src="${picture}" alt="${title}">
+                        <img id="${id}" src="${picture}" alt="${title}"tabindex="0">
                     </div>
                 </article>
                 <div class="picture_title">
-                    <h6>${title}</h6>
+                    <h6 tabindex="0">${title}</h6>
                     <div class="media_compteur_like">
                         <label id="like-${id}" for="like-${id}-input" class="compteur_like">${compteur}</label>
                         <input id="like-${id}-input" type="checkbox" aria-label="${compteur} likes" class="likes" onclick="">
@@ -31,11 +31,11 @@ export function mediaFactory(media) {
       mediaDOM = `
                 <article class="picture_block" aria-label="lien vers l'image">
                     <div class="picture">
-                        <video id="${id}" src="${mediaVideo}" alt="${title}"></video>
+                        <video id="${id}" src="${mediaVideo}" alt="${title}" tabindex="0"></video>
                     </div>
                 </article>
                 <div class="picture_title">
-                    <h6>${title}</h6>
+                    <h6 tabindex="0">${title}</h6>
                     <div class="media_compteur_like">
                         <label id="like-${id}" for="like-${id}-input" class="compteur_like">${compteur}</label>
                         <input id="like-${id}-input" type="checkbox" aria-label="${compteur} likes" class="likes"/>

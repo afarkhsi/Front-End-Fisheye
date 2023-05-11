@@ -69,6 +69,11 @@ mediaElements.forEach((mediaElement, index) => {
   mediaElement.addEventListener('click', () => {
     openLightbox(index, mediaElements);
   });
+  mediaElement.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      openLightbox(index, mediaElements);
+    }
+  })
 });
 
 
@@ -122,12 +127,25 @@ function lightboxSorted() {
   });
 }
 
+function keyDownEventLightboxSorted() {
+  mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video')
+  mediaElements.forEach((mediaElement, index) => {
+    mediaElement.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        openLightbox(index, mediaElements);
+      }
+    })
+  });
+}
+
 popularityBtn.addEventListener("click", function () {
   lightboxSorted()
 })
 
-popularityBtn.addEventListener("click", function () {
-  lightboxSorted()
+popularityBtn.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    keyDownEventLightboxSorted()  
+  }
 })
 
 // Listener Lightbox sort by title
@@ -138,11 +156,24 @@ titleBtn.addEventListener("click", function () {
   lightboxSorted()
 })
 
+titleBtn.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    keyDownEventLightboxSorted()  
+  }
+})
+
+
 const dateBtn = document.querySelector('.selector__element2')
 
 // Listener Lightbox sort by date
 
 dateBtn.addEventListener('click', function () {
   lightboxSorted()
+})
+
+dateBtn.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    keyDownEventLightboxSorted()  
+  }
 })
 

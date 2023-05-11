@@ -4,7 +4,7 @@ import {mediaData, mediaPhotographer} from '../pages/photographerController.js'
 const dateBtn = document.querySelector('.selector__element2')
 const popularityBtn = document.querySelector('.selector__element1')
 const titleBtn = document.querySelector('.selector__element3')
-const navTab = document.querySelector('.dropdown')
+// const navTab = document.querySelector('.dropdown')
 // --- Utils function --- //
 
 // Sort data by date
@@ -171,11 +171,11 @@ dropdowns.forEach(dropdown => {
     }
   }
 
-  const focusableElementsArray = [
-    '.selector__element',
-  ];
+  // const focusableElementsArray = [
+  //   '.selector__element',
+  // ];
 
-  const focusableElements = navTab.querySelectorAll(focusableElementsArray)
-  console.log('tableau elements à focus:', focusableElements)
+  // const focusableElements = navTab.querySelectorAll(focusableElementsArray)
+  // console.log('tableau elements à focus:', focusableElements)
 
 })

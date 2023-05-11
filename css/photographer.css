@@ -118,11 +118,14 @@ main {
   transition: background .3s ease-in-out;
 }
 
-.contact_button:hover {
+.contact_button:hover,
+.contact_button:focus {
   background-color: #D3573C;
   color: #000000;
   border: 2px solid #901C1C;;
 }
+
+
 
 
 /* FILTER */
@@ -190,6 +193,10 @@ h5 {
   background-color: #D3573C;
 }
 
+.select:focus {
+  background-color: #D3573C;
+}
+
 .selected:hover {
   color: #000000;
 }
@@ -226,7 +233,7 @@ h5 {
 .menu li:hover {
   background: #D3573C;
 }
-  
+
 .menu li:focus {
   background: #D3573C;
 }
@@ -263,6 +270,7 @@ h5 {
   display: grid;
   grid-template-columns: 1fr;
   overflow: hidden;
+  border-radius: 5px;
 }
 
 .picture {
@@ -284,6 +292,15 @@ h5 {
   height: 100%;
   object-fit: cover;
 }
+
+.picture img:focus {
+  border: 3px solid #D3573C;
+}
+
+video:focus {
+  border: 3px solid #D3573C;
+}
+
 
 .picture_title {
   color: #901C1C;
