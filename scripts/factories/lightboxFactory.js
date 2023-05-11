@@ -3,6 +3,7 @@ import {disableBodyScroll, enableBodyScroll} from "./bodyScrollLock.js";
 
 // Récupérez tous les éléments nécessaires
 const lightbox = document.getElementById('lightbox');
+const mediaSection = document.querySelector('.photographer-media-container');
 // const lightboxContent = document.getElementById('lightbox-content');
 const lightboxImage = document.getElementById('lightbox-image');
 const lightboxMedia = document.getElementById('lightbox-media');
@@ -100,7 +101,7 @@ document.onkeyup = (event) => {
   }
 }
 
-document.addEventListener('keydown', keyHandler);
+mediaSection.addEventListener('keydown', keyHandler);
 function keyHandler(e) {
   // Left Arrow
   if (e.key === 'ArrowLeft') {

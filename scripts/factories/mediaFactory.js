@@ -52,7 +52,7 @@ export function mediaFactory(media) {
       } else {
         compteur -= 1
         totalLikes -= 1
-console.log(totalLikes)
+        console.log(totalLikes)
       }
       getLikesPrice()
       wrapper.querySelector('input.likes').setAttribute('aria-label', `${compteur} likes`)

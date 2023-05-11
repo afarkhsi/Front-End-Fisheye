@@ -15,12 +15,12 @@ function photographerFactory(photographer) {
                     </div>
                     <div class="profil_description">
                         <h2>${name}</h2>
-                        <h3>${city}, ${country}</h3>
-                        <h4>${tagline}</h4>
-                        <h5>${price}€/jour</h5>
                     </div>
                 </article>
             </a>
+            <h3>${city}, ${country}</h3>
+            <h4>${tagline}</h4>
+            <h5>${price}€/jour</h5>
         `
     return wrapper;
   }
