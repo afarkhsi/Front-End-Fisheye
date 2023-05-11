@@ -113,13 +113,21 @@ function keyHandler(e) {
 // Listener Lightbox sort by likes
 const popularityBtn = document.querySelector('.selector__element1')
 
-popularityBtn.addEventListener("click", function () {
+function lightboxSorted() {
   mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video')
   mediaElements.forEach((mediaElement, index) => {
     mediaElement.addEventListener('click', () => {
       openLightbox(index, mediaElements)
     });
   });
+}
+
+popularityBtn.addEventListener("click", function () {
+  lightboxSorted()
+})
+
+popularityBtn.addEventListener("click", function () {
+  lightboxSorted()
 })
 
 // Listener Lightbox sort by title
@@ -127,12 +135,7 @@ popularityBtn.addEventListener("click", function () {
 const titleBtn = document.querySelector('.selector__element3')
 
 titleBtn.addEventListener("click", function () {
-  mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video')
-  mediaElements.forEach((mediaElement, index) => {
-    mediaElement.addEventListener('click', () => {
-      openLightbox(index, mediaElements)
-    });
-  });
+  lightboxSorted()
 })
 
 const dateBtn = document.querySelector('.selector__element2')
@@ -140,11 +143,6 @@ const dateBtn = document.querySelector('.selector__element2')
 // Listener Lightbox sort by date
 
 dateBtn.addEventListener('click', function () {
-  mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video')
-  mediaElements.forEach((mediaElement, index) => {
-    mediaElement.addEventListener('click', () => {
-      openLightbox(index, mediaElements)
-    });
-  });
+  lightboxSorted()
 })
 

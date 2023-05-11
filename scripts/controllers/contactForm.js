@@ -84,19 +84,6 @@ function displayModal() {
       });
     }
   });
-
-  // //Gestion des messages d'erreur personnalisés 
-  // const prenom = document.querySelector('#form-firstname');
-  // const nom = document.querySelector('#form-lastname');
-  // const email = document.querySelector('#form-email');
-  // const message = document.querySelector('#form-message');
-
-  // const prenomValide = () => (prenom.value.trim().length >= 2);
-  // const nomValide = () => (nom.value.trim().length >= 2);
-  // let regexEmail = /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/;
-  // const emailValide = () => regexEmail.test(email.value);
-  // const messageValide = () => (nom.value.trim().length >= 10);
-
 }
 
 function closeModal() {

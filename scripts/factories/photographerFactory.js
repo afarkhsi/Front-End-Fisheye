@@ -32,7 +32,7 @@ function photographerFactory(photographer) {
 
     wrapperBanner.innerHTML = `
             <article aria-label = "Profil du photographe">
-                <div class="profil_description">
+                <div class="profil_description" tabindex="0">
                     <h2>${name}</h2>
                     <h3>${city}, ${country}</h3>
                     <h4>${tagline}</h4>
@@ -40,7 +40,7 @@ function photographerFactory(photographer) {
                 <div class="profil_description_button">
                     <button class="contact_button" aria-label="Contacter ${name}" aria-haspopup="dialog" aria-controls="dialog" onmouseover="" onclick="displayModal()">Contactez-moi</button>
                 </div>
-                <div class="profil_picture">
+                <div class="profil_picture" tabindex="0">
                     <img src="${picture}" alt="${portrait}">
                 </div>
             </article>

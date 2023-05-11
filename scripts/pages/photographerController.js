@@ -56,3 +56,54 @@ function formData() {
   bodyDOM.appendChild(contactForm(photographer).getContactFormDOM());
 }
 
+// FOCUS TAB 
+
+const focusableElementsArray = [
+  '[href]',
+  'button:not([disabled])',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  'img',
+  'video',
+  'div',
+  'article .picture_block'
+];
+
+const focusableElements = bodyDOM.querySelectorAll(focusableElementsArray)
+  console.log('tableau elements à focus:', focusableElements)
+
+const firstFocusableElement = focusableElements[0]
+console.log('premier element focus:', firstFocusableElement)
+
+const lastFocusableElement = focusableElements[focusableElements.length -1]
+  // console.log('dernier element focus:', lastFocusableElement)
+
+const keyCode = {
+  tab: 9, 
+};
+
+firstFocusableElement.focus()
+
+focusableElements.forEach((focusableElement) => {
+  if (focusableElement.addEventListener) {
+    focusableElement.addEventListener('keydown', (event) => {
+      const tab = event.which === keyCode.tab;
+
+      if (!tab) {
+        return;
+      }
+
+      if (event.shiftKey) {
+        if (event.target === firstFocusableElement) { // shift + tab
+          event.preventDefault();
+
+          lastFocusableElement.focus();
+        }
+      } else if (event.target === lastFocusableElement) { // tab
+        event.preventDefault();
+
+        firstFocusableElement.focus();
+      }
+    });
+  }
+});

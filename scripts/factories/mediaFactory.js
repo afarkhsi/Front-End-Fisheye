@@ -70,14 +70,14 @@ console.log(totalLikes)
     const sort = `
         <h5 id="filter__title" tabindex="0">Trier par</h5>
         <div class="dropdown">
-            <div class="select" data-filter-value="popularity">
+            <div class="select" data-filter-value="popularity" tabindex="0">
                 <span class="selected" aria-labelledby="filter__title" aria-expanded="false" aria-haspopup="listbox">Popularité</span>
                 <span id = "material" class="material-symbols-outlined">expand_more</span>
             </div>
             <ul role="listbox" class="menu" aria-activedescendant="filter__option1" aria-labelledby="filter__title">
-                <li class="selector__element selector__element1 active" role="option" tabindex="-1" data-filter-option="popularity" aria-labelledby="filter__title" aria-selected="true">Popularité</li>
-                <li class="selector__element selector__element2" role="option" tabindex="-1" data-filter-option="date" aria-labelledby="filter__title">Date</li>
-                <li class="selector__element selector__element3" role="option" tabindex="-1" data-filter-option="title" aria-labelledby="filter__title">Titre</li>
+                <li class="selector__element selector__element1 active" role="option" tabindex="0" data-filter-option="popularity" aria-labelledby="filter__title" aria-selected="true">Popularité</li>
+                <li class="selector__element selector__element2" role="option" tabindex="0" data-filter-option="date" aria-labelledby="filter__title">Date</li>
+                <li class="selector__element selector__element3" role="option" tabindex="0" data-filter-option="title" aria-labelledby="filter__title">Titre</li>
             </ul>
         </div>
     `
