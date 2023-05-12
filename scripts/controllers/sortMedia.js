@@ -20,7 +20,6 @@ export const sortByDate = (data) => {
     if (dateA < dateB) {
       return 1;
     }
-    console.log(copyData)
     return 0
   }); 
 }

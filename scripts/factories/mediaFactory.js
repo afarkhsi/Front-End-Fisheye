@@ -1,7 +1,7 @@
-import {mediaPhotographer, photographer} from '../pages/photographerController.js'
+import { mediaPhotographer, photographer } from '../pages/photographerController.js'
 
 export function mediaFactory(media) {
-  const {id, photographerId, title, image, video, likes, date, price} = media;
+  const { id, photographerId, title, image, video, likes, date, price } = media;
 
   const wrapper = document.createElement('article');
   wrapper.classList.add("photographies")
@@ -9,10 +9,31 @@ export function mediaFactory(media) {
   const picture = `assets/images/${media.photographerId}/${image}`;
   const mediaVideo = `assets/images/${media.photographerId}/${video}`;
 
+  // Compteur like
+  // let compteur = likes
+  let totalLikes = 0;
+  let counts = likes;
+  console.log(counts)
+  
+
   // Generate Card article
   function getUserMediaDOM() {
     let mediaDOM;
     if (media.image) {
+      // mediaDOM = `
+      //           <article class="picture_block" aria-label="lien vers l'image">
+      //               <div class="picture" data="${id}">
+      //                   <img id="${id}" src="${picture}" alt="${title}"tabindex="0">
+      //               </div>
+      //           </article>
+      //           <div class="picture_title">
+      //               <h6 tabindex="0">${title}</h6>
+      //               <div class="media_compteur_like">
+      //                   <label id="like-${id}" for="like-${id}-input" class="compteur_like">${compteur}</label>
+      //                   <input id="like-${id}-input" type="checkbox" aria-label="${compteur} likes" class="likes" onclick="">
+      //               </div>
+      //           </div>
+      //       `
       mediaDOM = `
                 <article class="picture_block" aria-label="lien vers l'image">
                     <div class="picture" data="${id}">
@@ -22,8 +43,8 @@ export function mediaFactory(media) {
                 <div class="picture_title">
                     <h6 tabindex="0">${title}</h6>
                     <div class="media_compteur_like">
-                        <label id="like-${id}" for="like-${id}-input" class="compteur_like">${compteur}</label>
-                        <input id="like-${id}-input" type="checkbox" aria-label="${compteur} likes" class="likes" onclick="">
+                        <label id="like-${id}" for="like-${id}-input" class="compteur_like localcounters">${counts}</label>
+                        <input id="button" type="checkbox" aria-label="likes" class="likes" onclick="">
                     </div>
                 </div>
             `
@@ -37,29 +58,109 @@ export function mediaFactory(media) {
                 <div class="picture_title">
                     <h6 tabindex="0">${title}</h6>
                     <div class="media_compteur_like">
-                        <label id="like-${id}" for="like-${id}-input" class="compteur_like">${compteur}</label>
-                        <input id="like-${id}-input" type="checkbox" aria-label="${compteur} likes" class="likes"/>
+                        <label id="like-${id}" for="like-${id}-input" class="compteur_like localcounters">${counts}</label>
+                        <input id="button" type="checkbox" aria-label="likes" class="likes"/>
                     </div>
                 </div>
             `
-    }    
+    }
     wrapper.innerHTML = mediaDOM
-    wrapper.querySelector('.likes').addEventListener('click', (event) => {
-      if (event.target.checked) {
-        compteur += 1
-        totalLikes +=1
-        console.log(totalLikes)
-      } else {
-        compteur -= 1
-        totalLikes -= 1
-        console.log(totalLikes)
-      }
-      getLikesPrice()
-      wrapper.querySelector('input.likes').setAttribute('aria-label', `${compteur} likes`)
-      wrapper.querySelector('label.compteur_like').innerHTML = compteur;
-    })
+    const globalCounter = document.getElementById("global-counter");
+    const counters = document.querySelectorAll(".localcounters");
+    const buttons = document.querySelectorAll(".likes");
+
+    // Initialisation des compteurs
+    let globalCount = totalLikes;
+
+    globalCounter.textContent = globalCount;
+    counters.textContent= counts
+
+    // let test =  counters.textContent
+    // counters.forEach((counter, index) => {
+    //     counter.textContent = counts[index];
+    // });
+    // let mediaCount=[];
+
+    // mediaPhotographer.forEach(media => {
+    //   mediaCount.push(media.likes)
+    // })
+
+
+
+    // Boucle sur chaque bouton pour ajouter les événements
+    buttons.forEach((button) => {
+        // Initialisation du compteur local
+        let count = 0;
+
+        // Événement pour le bouton
+        button.addEventListener("click", (event) => {
+            if (event.target.checked) {
+                counts += 1;
+                console.log('test', counts)
+                globalCount += 1;
+                counters.textContent= counts;
+                globalCounter.textContent = globalCount;
+            } else {
+                counts-= 1;
+                globalCount -= 1;
+                counters.textContent = counts;
+                globalCounter.textContent = globalCount;
+            }
+            count++;
+            // button.textContent = count % 4 == 0 || count % 4 == 2 ? "+" : "-";
+        });
+    });
+    // wrapper
+    //   .querySelector('.likes')
+    //   .addEventListener('click', (event) => {
+    //     if (event.target.checked) {
+    //       compteur += 1
+    //       compteurJS.incrementerCompteur();
+    //     } else {
+    //       compteur -= 1
+    //       compteurJS.decrementerCompteur();
+    //     }
+    //     getLikesPrice()
+    //     wrapper.querySelector('input.likes').setAttribute('aria-label', `${compteur} likes`)
+    //     wrapper.querySelector('label.compteur_like').innerHTML = compteur;
+    //   })
     return wrapper;
   }
+
+
+
+  // Template encard prix photographe
+  const wrapperLikesPrice = document.createElement('div');
+  wrapperLikesPrice.classList.add('likes_price');
+
+  function getLikesPrice() {
+    // let totalLikesCompteurJS = compteurJS.getCompteur();
+    // console.log("totalLikesCompteurJS" + totalLikesCompteurJS);
+
+    // const LikesPrice = `
+    //         <div id="total-likes"><span id="sum-likes">${totalLikesCompteurJS}</span><span class="material-symbols-outlined">favorite</span></div>
+    //         <span>${photographer.price}€ / jour</span>
+    //     `
+    const LikesPrice = `
+            <div id="total-likes"><span id="global-counter"></span><span class="material-symbols-outlined">favorite</span></div>
+            <span>${photographer.price}€ / jour</span>
+        `
+    // wrapperLikesPrice.querySelector('sum-likes').innerHTML = totalLikes;
+    wrapperLikesPrice.innerHTML = LikesPrice;
+    // sumLikes()
+    return wrapperLikesPrice
+  }
+
+  function sumLikes() {
+    let sum = 0
+    mediaPhotographer.forEach(media => {
+      sum += media.likes
+    })
+    return sum
+  }
+  totalLikes = sumLikes();
+
+  // let compteurJS = new Compteur(totalLikes);
 
   // Template filtres
 
@@ -85,41 +186,13 @@ export function mediaFactory(media) {
     return wrapperMediaSort
   }
 
-  // Compteur like
-  let compteur = likes
-  let totalLikes = 0;
-
-  // Template encard prix photographe
-  const wrapperLikesPrice = document.createElement('div');
-  wrapperLikesPrice.classList.add('likes_price');
-
-  function getLikesPrice() {
-    const LikesPrice = `
-            <div id="total-likes"><span id="sum-likes">${totalLikes}</span><span class="material-symbols-outlined">favorite</span></div>
-            <span>${photographer.price}€ / jour</span>
-        `
-    // wrapperLikesPrice.querySelector('sum-likes').innerHTML = totalLikes;
-    wrapperLikesPrice.innerHTML = LikesPrice;
-    // sumLikes()
-    return wrapperLikesPrice
-  }
-
-  function sumLikes() {
-    let sum = 0
-    mediaPhotographer.forEach(media => {
-      sum += media.likes
-    })
-    return sum
-  }
-  totalLikes = sumLikes();
-
   return {
     id,
     photographerId,
     title,
     picture,
     video,
-    compteur,
+    counts,
     totalLikes,
     date,
     price,

@@ -99,6 +99,6 @@ h5 {
 }
 
 /* a:focus {
-  outline: #D3573C solid;
-  box-shadow: 1PX  1px 1px 6px rgba(255, 81, 0, 0.5);
+  outline: 0;
+  border: 2px solid #901C1C!important;
 } */
