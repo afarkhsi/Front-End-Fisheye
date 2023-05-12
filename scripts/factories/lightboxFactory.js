@@ -143,10 +143,8 @@ popularityBtn.addEventListener("click", function () {
   lightboxSorted()
 })
 
-popularityBtn.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
+popularityBtn.addEventListener('keydown', () => {
     keyDownEventLightboxSorted()  
-  }
 })
 
 // Listener Lightbox sort by title
@@ -157,10 +155,10 @@ titleBtn.addEventListener("click", function () {
   lightboxSorted()
 })
 
-titleBtn.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
+titleBtn.addEventListener('keydown', () => {
+
     keyDownEventLightboxSorted()  
-  }
+
 })
 
 
@@ -172,9 +170,9 @@ dateBtn.addEventListener('click', function () {
   lightboxSorted()
 })
 
-dateBtn.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
+dateBtn.addEventListener('keydown', () => {
+
     keyDownEventLightboxSorted()  
-  }
+
 })
 
