@@ -46,6 +46,7 @@ popularityBtn.addEventListener("click", function () {
   });
 
   mediaData(popularityArray)
+  likesSorted()
 })
 
 popularityBtn.addEventListener('keydown', (e) => {
@@ -58,6 +59,17 @@ popularityBtn.addEventListener('keydown', (e) => {
     mediaData(popularityArray)
   }
 })
+
+
+function likesSorted() {
+  let mediaCount=[];
+
+
+  mediaPhotographer.forEach(media => {
+    mediaCount.push(media.likes)
+    console.log(mediaCount)
+  })
+}
 
 
 // Listener sort by title

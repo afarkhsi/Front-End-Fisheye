@@ -74,7 +74,6 @@ export function mediaFactory(media) {
 
     mediaPhotographer.forEach(media => {
       mediaCount.push(media.likes)
-      console.log(mediaCount)
     })
 
     let counts = mediaCount;
@@ -89,8 +88,8 @@ export function mediaFactory(media) {
         let count = 0;
 
         // Événement pour le bouton
-        button.addEventListener("click", () => {
-            if (count % 4 == 0 || count % 4 == 2) {
+        button.addEventListener("click", (event) => {
+            if (event.target.checked) {
                 counts[index] += 1;
                 globalCount += 1;
                 counters[index].textContent = counts[index];
@@ -105,6 +104,7 @@ export function mediaFactory(media) {
             button.textContent = count % 4 == 0 || count % 4 == 2 ? "+" : "-";
         });
     });
+
     // wrapper
     //   .querySelector('.likes')
     //   .addEventListener('click', (event) => {
@@ -121,8 +121,6 @@ export function mediaFactory(media) {
     //   })
     return wrapper;
   }
-
-
 
   // Template encard prix photographe
   const wrapperLikesPrice = document.createElement('div');
