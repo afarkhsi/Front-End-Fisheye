@@ -10,11 +10,8 @@ export function mediaFactory(media) {
   const mediaVideo = `assets/images/${media.photographerId}/${video}`;
 
   // Compteur like
-  // let compteur = likes
+  let compteur = likes
   let totalLikes = 0;
-  let counts = likes;
-  console.log(counts)
-  
 
   // Generate Card article
   function getUserMediaDOM() {
@@ -43,8 +40,8 @@ export function mediaFactory(media) {
                 <div class="picture_title">
                     <h6 tabindex="0">${title}</h6>
                     <div class="media_compteur_like">
-                        <label id="like-${id}" for="like-${id}-input" class="compteur_like localcounters">${counts}</label>
-                        <input id="button" type="checkbox" aria-label="likes" class="likes" onclick="">
+                        <label id="like-${id}" for="like-${id}-input" class="compteur_like localcounters"></label>
+                        <input id="button" type="checkbox" aria-label="${compteur} likes" class="likes" onclick="">
                     </div>
                 </div>
             `
@@ -58,8 +55,8 @@ export function mediaFactory(media) {
                 <div class="picture_title">
                     <h6 tabindex="0">${title}</h6>
                     <div class="media_compteur_like">
-                        <label id="like-${id}" for="like-${id}-input" class="compteur_like localcounters">${counts}</label>
-                        <input id="button" type="checkbox" aria-label="likes" class="likes"/>
+                        <label id="like-${id}" for="like-${id}-input" class="compteur_like localcounters"></label>
+                        <input id="button" type="checkbox" aria-label="${compteur} likes" class="likes"/>
                     </div>
                 </div>
             `
@@ -67,50 +64,45 @@ export function mediaFactory(media) {
     wrapper.innerHTML = mediaDOM
     const globalCounter = document.getElementById("global-counter");
     const counters = document.querySelectorAll(".localcounters");
-    const buttons = document.querySelectorAll(".likes");
-
-    console.log(counters)
+    const buttons = document.querySelectorAll("input[id^='button']");
 
     // Initialisation des compteurs
     let globalCount = totalLikes;
 
+    let mediaCount=[];
+
+
+    mediaPhotographer.forEach(media => {
+      mediaCount.push(media.likes)
+      console.log(mediaCount)
+    })
+
+    let counts = mediaCount;
     globalCounter.textContent = globalCount;
-    counters.textContent= counts
-
-    // let test =  counters.textContent
-    // counters.forEach((counter, index) => {
-    //     counter.textContent = counts[index];
-    // });
-    // let mediaCount=[];
-
-    // mediaPhotographer.forEach(media => {
-    //   mediaCount.push(media.likes)
-    // })
-
-
+    counters.forEach((counter, index) => {
+        counter.textContent = counts[index];
+    });
 
     // Boucle sur chaque bouton pour ajouter les événements
-    buttons.forEach((button) => {
+    buttons.forEach((button, index) => {
         // Initialisation du compteur local
-        // eslint-disable-next-line no-unused-vars
         let count = 0;
 
         // Événement pour le bouton
-        button.addEventListener("click", (event) => {
-            if (event.target.checked) {
-                counts += 1;
-                console.log('test', counts)
+        button.addEventListener("click", () => {
+            if (count % 4 == 0 || count % 4 == 2) {
+                counts[index] += 1;
                 globalCount += 1;
-                counters.textContent= counts;
+                counters[index].textContent = counts[index];
                 globalCounter.textContent = globalCount;
             } else {
-                counts-= 1;
+                counts[index] -= 1;
                 globalCount -= 1;
-                counters.textContent = counts;
+                counters[index].textContent = counts[index];
                 globalCounter.textContent = globalCount;
             }
             count++;
-            // button.textContent = count % 4 == 0 || count % 4 == 2 ? "+" : "-";
+            button.textContent = count % 4 == 0 || count % 4 == 2 ? "+" : "-";
         });
     });
     // wrapper
@@ -137,11 +129,20 @@ export function mediaFactory(media) {
   wrapperLikesPrice.classList.add('likes_price');
 
   function getLikesPrice() {
+    // let totalLikesCompteurJS = compteurJS.getCompteur();
+    // console.log("totalLikesCompteurJS" + totalLikesCompteurJS);
+
+    // const LikesPrice = `
+    //         <div id="total-likes"><span id="sum-likes">${totalLikesCompteurJS}</span><span class="material-symbols-outlined">favorite</span></div>
+    //         <span>${photographer.price}€ / jour</span>
+    //     `
     const LikesPrice = `
-            <div id="total-likes"><span id="global-counter"></span><span class="material-symbols-outlined">favorite</span></div>
+            <div id="total-likes"><span id="global-counter">0</span><span class="material-symbols-outlined">favorite</span></div>
             <span>${photographer.price}€ / jour</span>
         `
+    // wrapperLikesPrice.querySelector('sum-likes').innerHTML = totalLikes;
     wrapperLikesPrice.innerHTML = LikesPrice;
+    // sumLikes()
     return wrapperLikesPrice
   }
 
@@ -154,6 +155,7 @@ export function mediaFactory(media) {
   }
   totalLikes = sumLikes();
 
+  // let compteurJS = new Compteur(totalLikes);
 
   // Template filtres
 
@@ -185,7 +187,7 @@ export function mediaFactory(media) {
     title,
     picture,
     video,
-    counts,
+    compteur,
     totalLikes,
     date,
     price,
